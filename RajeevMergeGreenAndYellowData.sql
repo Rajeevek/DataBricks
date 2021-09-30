@@ -54,7 +54,7 @@ ORDER BY Borough, TaxiType
 
 -- COMMAND ----------
 
-CREATE GLOBAL TEMPORARY  VIEW  FactTaxiZoneSmmary 
+CREATE GLOBAL TEMPORARY  VIEW  facttaxizonesummary 
     AS 
     SELECT Borough, TaxiType, COUNT(*) AS TotalSharedTrips FROM TaxiZones
 LEFT JOIN
@@ -68,7 +68,19 @@ LEFT JOIN
 
 -- COMMAND ----------
 
-Select * from global_temp.FactTaxiZoneSummary
+Select * from global_temp.facttaxizonesummary
+
+-- COMMAND ----------
+
+SELECT 'Green' AS TaxiType
+      , PickupTime
+      , DropTime
+      , PickupLocationId
+      , DropLocationId      
+      , TripTimeInMinutes
+      , TripType
+FROM global_temp.FactGreenTaxiTripData
+
 
 -- COMMAND ----------
 
